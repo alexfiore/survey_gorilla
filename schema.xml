@@ -51,74 +51,71 @@
       <row name="id" null="1" autoincrement="1">
         <datatype>INTEGER</datatype>
         <default>NULL</default></row>
-        <row name="complete" null="1" autoincrement="0">
+        <row name="survey_id" null="1" autoincrement="0">
           <datatype>INTEGER</datatype>
+          <default>NULL</default><relation table="surveys" row="id" />
+        </row>
+        <row name="text" null="1" autoincrement="0">
+          <datatype>VARCHAR</datatype>
           <default>NULL</default></row>
-          <row name="survey_id" null="1" autoincrement="0">
+          <key type="PRIMARY" name="">
+            <part>id</part>
+          </key>
+        </table>
+        <table x="775" y="288" name="choices">
+          <row name="id" null="1" autoincrement="1">
             <datatype>INTEGER</datatype>
-            <default>NULL</default><relation table="surveys" row="id" />
-          </row>
-          <row name="text" null="1" autoincrement="0">
-            <datatype>VARCHAR</datatype>
             <default>NULL</default></row>
-            <key type="PRIMARY" name="">
-              <part>id</part>
-            </key>
-          </table>
-          <table x="775" y="288" name="choices">
-            <row name="id" null="1" autoincrement="1">
+            <row name="question_id" null="1" autoincrement="0">
               <datatype>INTEGER</datatype>
+              <default>NULL</default><relation table="questions" row="id" />
+            </row>
+            <row name="text" null="1" autoincrement="0">
+              <datatype>VARCHAR</datatype>
               <default>NULL</default></row>
-              <row name="question_id" null="1" autoincrement="0">
+              <key type="PRIMARY" name="">
+                <part>id</part>
+              </key>
+            </table>
+            <table x="160" y="291" name="users">
+              <row name="id" null="1" autoincrement="1">
                 <datatype>INTEGER</datatype>
-                <default>NULL</default><relation table="questions" row="id" />
-              </row>
-              <row name="text" null="1" autoincrement="0">
-                <datatype>VARCHAR</datatype>
                 <default>NULL</default></row>
-                <key type="PRIMARY" name="">
-                  <part>id</part>
-                </key>
-              </table>
-              <table x="160" y="291" name="users">
-                <row name="id" null="1" autoincrement="1">
-                  <datatype>INTEGER</datatype>
+                <row name="name" null="1" autoincrement="0">
+                  <datatype>VARCHAR</datatype>
                   <default>NULL</default></row>
-                  <row name="name" null="1" autoincrement="0">
+                  <row name="email" null="1" autoincrement="0">
                     <datatype>VARCHAR</datatype>
                     <default>NULL</default></row>
-                    <row name="email" null="1" autoincrement="0">
+                    <row name="password" null="1" autoincrement="0">
                       <datatype>VARCHAR</datatype>
                       <default>NULL</default></row>
-                      <row name="password" null="1" autoincrement="0">
-                        <datatype>VARCHAR</datatype>
+                      <key type="PRIMARY" name="">
+                        <part>id</part>
+                      </key>
+                    </table>
+                    <table x="516" y="104" name="responses">
+                      <row name="id" null="1" autoincrement="1">
+                        <datatype>INTEGER</datatype>
                         <default>NULL</default></row>
+                        <row name="choice_id" null="1" autoincrement="0">
+                          <datatype>INTEGER</datatype>
+                          <default>NULL</default><relation table="choices" row="id" />
+                        </row>
+                        <row name="user_id" null="1" autoincrement="0">
+                          <datatype>INTEGER</datatype>
+                          <default>NULL</default><relation table="users" row="id" />
+                        </row>
+                        <row name="survey_id" null="1" autoincrement="0">
+                          <datatype>INTEGER</datatype>
+                          <default>NULL</default><relation table="surveys" row="id" />
+                        </row>
+                        <row name="question_id" null="1" autoincrement="0">
+                          <datatype>INTEGER</datatype>
+                          <default>NULL</default><relation table="questions" row="id" />
+                        </row>
                         <key type="PRIMARY" name="">
                           <part>id</part>
                         </key>
                       </table>
-                      <table x="516" y="104" name="responses">
-                        <row name="id" null="1" autoincrement="1">
-                          <datatype>INTEGER</datatype>
-                          <default>NULL</default></row>
-                          <row name="choice_id" null="1" autoincrement="0">
-                            <datatype>INTEGER</datatype>
-                            <default>NULL</default><relation table="choices" row="id" />
-                          </row>
-                          <row name="user_id" null="1" autoincrement="0">
-                            <datatype>INTEGER</datatype>
-                            <default>NULL</default><relation table="users" row="id" />
-                          </row>
-                          <row name="survey_id" null="1" autoincrement="0">
-                            <datatype>INTEGER</datatype>
-                            <default>NULL</default><relation table="surveys" row="id" />
-                          </row>
-                          <row name="question_id" null="1" autoincrement="0">
-                            <datatype>INTEGER</datatype>
-                            <default>NULL</default><relation table="questions" row="id" />
-                          </row>
-                          <key type="PRIMARY" name="">
-                            <part>id</part>
-                          </key>
-                        </table>
-                      </sql>
+                    </sql>
