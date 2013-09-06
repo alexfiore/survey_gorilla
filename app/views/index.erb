@@ -1,26 +1,26 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+  <% if current_user %>
+  <% @surveys do |s| %>
+      <%= "#{s}" %>
+      <br>
+      <% end %>
+  <% else %>
+  <form action="/sign_up" method="POST">
+    
+    <input type="text" name="name" placeholder="name"><br>
+    <input type="email" name="email" placeholder="email"><br>
+    <input type="password" name="password" placeholder="password"><br>
+    <input type="submit" value="sign me up!"><br><br>
+  </form>
+
+  <form action="/sign_in" method="POST">
+    <p>Sign-In:<br>
+      <input type="email" name="email" placeholder="email"><br>
+      <input type="password" name="password" placeholder="password"><br>
+
+      <input type="submit" value="login">
+  </form>
+  <% end %>
+
 </div>
-
-
-action='/login' method="post"
