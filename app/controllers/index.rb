@@ -23,7 +23,6 @@ post '/login' do
   end
 end
 
-
 get '/surveys' do
   "show all surveys and give options to create survey, logout, stats"  
 end
