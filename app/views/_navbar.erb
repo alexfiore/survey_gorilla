@@ -1,0 +1,17 @@
+<div class="nav-bar">
+
+<%if current_user %>
+  <br>
+  <div class = "nav-bar">
+    <ul>  
+      <li><a href="/logout">logout</a></li>
+    </ul>
+  </div>
+  
+<% else %>
+     
+     <%= erb :index %>
+
+  <%end%>
+
+</div>
