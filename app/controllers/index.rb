@@ -3,7 +3,6 @@ before do
 end
 
 get '/' do
-
   if current_user
     redirect "/surveys"
   else
@@ -44,7 +43,6 @@ end
 
 get '/surveys' do
   "show all surveys and give options to create survey, logout, stats"
-  puts Survey.all.first
   @surveys = Survey.all
   erb :surveys
 end
@@ -55,11 +53,11 @@ end
 
 post '/surveys' do
   "create new survey and takes us to surveys erb"
-  p params.inspect
-  p params[:name]
   @survey = Survey.create!(:name => params[:name])
-  p @survey.name
-  # @question= Question.create(params[:name])
+  @question= Question.create!(:text => params[:question])
+  @choice1 = Choice.create!(:text => params[:choice1])
+  @choice2 = Choice.create!(:text => params[:choice1])
+  @choice3 = Choice.create!(:text => params[:choice1])
   erb :surveys
 end
 

@@ -1,11 +1,12 @@
 
 <!-- need a logout -->
-
-  <% @surveys.each do |s| %>
+<!--<%= p @surveys.inspect %> -->
+ <% @surveys.each do |s| %>
+ <%= @surveys.inspect %>
      <div> <%= "#{s.name}" %> </div>
      <button><a href='/surveys/<%= "#{s.id}" %>'> take </button>
-    <form action="/surveys/<%= "#{s.id}" %>" method="get">
-    <input type="submit" value="take">
+    <!-- <form action="/surveys/<%= "#{s.id}" %>" method="get">
+    <input type="submit" value="take"> -->
   </form>
      <button><a href='/surveys/<%= "#{s.id}" %>'>stats</a></button>
      <% end %>
