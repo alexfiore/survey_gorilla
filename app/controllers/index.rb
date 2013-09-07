@@ -13,7 +13,7 @@ end
 
 post '/login' do 
   @user = User.find_by_email(params[:user][:email])
-  
+
   if User.authenticate(params[:user][:email], params[:user][:password])
     session[:id] = @user.id
     redirect "/surveys"
@@ -23,9 +23,11 @@ post '/login' do
   end
 end
 
-post '/signup' do
+post '/sign_up' do
+  puts params
+  puts params[:user]
   @user = User.new(params[:user])
-
+  @user.save
   if @user.save 
     session[:id] = @user.id
     redirect "/surveys"
@@ -40,12 +42,12 @@ get '/logout' do
 end
 
 get '/surveys' do
-  "show all surveys and give options to create survey, logout, stats"  
+  "show some surveys!"
+  # erb :surveys  
 end
 
 post '/surveys' do
   "create new survey and takes us to surveys erb"
-  erb :surveys
 end
 
 get '/surveys/:survey_id' do

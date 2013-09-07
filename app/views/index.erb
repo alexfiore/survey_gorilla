@@ -1,26 +1,24 @@
 <div class="container">
 
   <% if current_user %>
-  <% @surveys.each do |s| %>
-      <%= "#{s}" %>
-      <br>
-      <% end %>
+  <% erb :surveys %>  
   <% else %>
+
   <form action="/sign_up" method="POST">
-    
-    <input type="text" name="name" placeholder="name"><br>
-    <input type="email" name="email" placeholder="email"><br>
-    <input type="password" name="password" placeholder="password"><br>
+    Sign-Up:<br>
+    <input type="text" name="user[name]" placeholder="name"><br>
+    <input type="email" name="user[email]" placeholder="email"><br>
+    <input type="password" name="user[password]" placeholder="password"><br>
     <input type="submit" value="sign me up!"><br><br>
   </form>
 
-  <form action="/sign_in" method="POST">
-    <p>Sign-In:<br>
-      <input type="email" name="email" placeholder="email"><br>
-      <input type="password" name="password" placeholder="password"><br>
+  <form action="/login" method="POST">
+      Login:<br>
+      <input type="email" name="user[email]" placeholder="email"><br>
+      <input type="password" name="user[password]" placeholder="password"><br>
 
       <input type="submit" value="login">
   </form>
   <% end %>
 
-</div>
+</div

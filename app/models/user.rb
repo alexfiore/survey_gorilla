@@ -7,7 +7,10 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates :password, presence: true
+
+  def password
+    @password ||= Password.new(password_hash)
+  end
 
   def password=(new_password)
     @password = new_password
