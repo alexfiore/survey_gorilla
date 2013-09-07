@@ -1,22 +1,22 @@
-before do 
-  erb :index unless current_user 
+before do
+  erb :index unless current_user
 end
 
-get '/' do 
-                                                       
-  if current_user 
+get '/' do
+  if current_user
     redirect "/surveys"
   else
     erb :index
   end
 end
 
-post '/login' do 
+
+post '/login' do
   @user = User.find_by_email(params[:user][:email])
   if User.authenticate(params[:user][:email], params[:user][:password])
     session[:id] = @user.id
     redirect "/surveys"
-  else 
+  else
     erb :index
     #do error handling
   end
@@ -27,7 +27,7 @@ post '/sign_up' do
   puts params[:user]
   @user = User.new(params[:user])
   @user.save
-  if @user.save 
+  if @user.save
     session[:id] = @user.id
     redirect "/surveys"
   else
@@ -41,8 +41,8 @@ get '/logout' do
 end
 
 get '/surveys' do
-  "show all surveys and give options to create survey, logout, stats"  
-  @surveys = Survey.all 
+  "show all surveys and give options to create survey, logout, stats"
+  @surveys = Survey.all
   erb :surveys
 end
 
@@ -52,18 +52,20 @@ end
 
 post '/surveys' do
   "create new survey and takes us to surveys erb"
+  survey = Survey.create!(:name => params[:name])
+  question= Question.create!(:text => params[:question], :survey_id => survey.id)
+  Choice.create!(:text => params[:choice1],:question_id => question.id)
+  Choice.create!(:text => params[:choice2], :question_id => question.id)
+  Choice.create!(:text => params[:choice3], :question_id => question.id)
+  redirect "/surveys/#{survey.id}"
 end
 
 get '/surveys/:id' do
   "shows the survey for the user to take"
   @survey = Survey.find_by_id(params[:id])
-  puts "**************************"
-  puts @survey
-  @question = Question.where(survey_id: params[:id])
-  puts "**************************"
   # puts @question
   # @choice =[]
-  
+
   # @choice = Choice.where(question_id: @question.id)
   # puts "**************************"
   # puts @choice

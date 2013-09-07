@@ -1,14 +1,15 @@
 
-<div class="survey_list">
-    <% @surveys.each do |s| %>
-    <p><%= "#{s.name}" %></p>
-    <button><a href='/surveys/<%= "#{s.id}" %>'>take</a></button>
-    <!-- can also use a form to create the buttons 
-    <form action="/surveys/<%= "#{s.id}" %>" method="get">
-    <input type="submit" value="take">
-  </form>  -->
-     <button><a href='/surveys/<%= "#{s.id}" %>'>stats</a></button> 
-     <% end %> 
+<!-- need a logout -->
+<!--<%= p @surveys.inspect %> -->
+ <% @surveys.each do |s| %>
+ <%= @surveys.inspect %>
+     <div> <%= "#{s.name}" %> </div>
+     <button><a href='/surveys/<%= "#{s.id}" %>'> take </button>
+    <!-- <form action="/surveys/<%= "#{s.id}" %>" method="get">
+    <input type="submit" value="take"> -->
+  </form>
+     <button><a href='/surveys/<%= "#{s.id}" %>'>stats</a></button>
+     <% end %>
     <button><a href='/surveys/new'>Create new survey</a></button>
 </div>
 
