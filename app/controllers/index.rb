@@ -12,18 +12,9 @@ get '/' do
 end
 
 post '/login' do 
-<<<<<<< HEAD
   @user = User.find_by_email(params[:user][:email])
-
   if User.authenticate(params[:user][:email], params[:user][:password])
     session[:id] = @user.id
-=======
-  @user = User.find_by_email(params[:email])
-  # figure this out
-  if true
-  # if User.authenticate(params[:name][:email], params[:name][:password])
-  #   session[:id] = @user.id
->>>>>>> 181b557bdd4e77775eadd3da44d40933f8b7391a
     redirect "/surveys"
   else 
     erb :index
@@ -31,7 +22,6 @@ post '/login' do
   end
 end
 
-<<<<<<< HEAD
 post '/sign_up' do
   puts params
   puts params[:user]
@@ -51,25 +41,13 @@ get '/logout' do
 end
 
 get '/surveys' do
-  "show some surveys!"
-  # erb :surveys  
-=======
-post '/signup' do
-
-  redirect "/surveys"
-end
-
-
-get '/surveys' do
   "show all surveys and give options to create survey, logout, stats"  
-  puts Survey.all.first
   @surveys = Survey.all 
   erb :surveys
 end
 
 get '/surveys/new' do
   erb :new_survey
->>>>>>> 181b557bdd4e77775eadd3da44d40933f8b7391a
 end
 
 post '/surveys' do
