@@ -1,10 +1,7 @@
 <div class="container">
 
   <% if current_user %>
-  <% @surveys do |s| %>
-      <%= "#{s}" %>
-      <br>
-      <% end %>
+   <% erb :surveys %>
   <% else %>
   <form action="/sign_up" method="POST">
     
@@ -14,8 +11,8 @@
     <input type="submit" value="sign me up!"><br><br>
   </form>
 
-  <form action="/sign_in" method="POST">
-    <p>Sign-In:<br>
+  <form action="/login" method="POST">
+    <p>Login:<br>
       <input type="email" name="email" placeholder="email"><br>
       <input type="password" name="password" placeholder="password"><br>
 

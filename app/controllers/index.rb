@@ -3,7 +3,7 @@ before do
 end
 
 get '/' do 
-  @surveys = Survey.all                                                      
+                                                       
   if current_user 
     redirect "/surveys"
   else
@@ -12,10 +12,11 @@ get '/' do
 end
 
 post '/login' do 
-  @user = User.find_by_email(params[:user][:email])
-  
-  if User.authenticate(params[:user][:email], params[:user][:password])
-    session[:id] = @user.id
+  @user = User.find_by_email(params[:email])
+  # figure this out
+  if true
+  # if User.authenticate(params[:name][:email], params[:name][:password])
+  #   session[:id] = @user.id
     redirect "/surveys"
   else 
     erb :index
@@ -23,11 +24,22 @@ post '/login' do
   end
 end
 
+post '/signup' do
+
+  redirect "/surveys"
+end
+
 
 get '/surveys' do
   "show all surveys and give options to create survey, logout, stats"  
+  puts Survey.all.first
+  @surveys = Survey.all 
+  erb :surveys
 end
 
+get '/surveys/new' do
+  erb :new_survey
+end
 
 post '/surveys' do
   "create new survey and takes us to surveys erb"
