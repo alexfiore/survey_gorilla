@@ -1,0 +1,20 @@
+
+  
+<!-- need a logout -->
+
+  <% @surveys.each do |s| %>
+     <div> <%= "#{s.name}" %> </div>
+     <button><a href='/surveys/<%= "#{s.id}" %>'> take </button>
+       <!-- <form action="/surveys/<%= "#{s.id}" %>" method="get">
+    <input type="submit" value="take">
+  </form>  -->
+     <button><a href='/surveys/<%= "#{s.id}" %>/stats'> stats </button>
+      <% end %>
+      <button ><a href = '/surveys/new'> Create new survey </a></button>
+
+
+
+
+
+
+
