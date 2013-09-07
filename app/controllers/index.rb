@@ -1,43 +1,35 @@
-before do 
-  erb :index unless current_user 
+before do
+  erb :index unless current_user
 end
 
-get '/' do 
-                                                       
-  if current_user 
+get '/' do
+
+  if current_user
     redirect "/surveys"
   else
     erb :index
   end
 end
 
-post '/login' do 
-<<<<<<< HEAD
-  @user = User.find_by_email(params[:user][:email])
 
+post '/login' do
+  @user = User.find_by_email(params[:user][:email])
   if User.authenticate(params[:user][:email], params[:user][:password])
     session[:id] = @user.id
-=======
-  @user = User.find_by_email(params[:email])
-  # figure this out
-  if true
-  # if User.authenticate(params[:name][:email], params[:name][:password])
-  #   session[:id] = @user.id
->>>>>>> 181b557bdd4e77775eadd3da44d40933f8b7391a
     redirect "/surveys"
-  else 
+  else
     erb :index
     #do error handling
   end
 end
 
-<<<<<<< HEAD
+
 post '/sign_up' do
   puts params
   puts params[:user]
   @user = User.new(params[:user])
   @user.save
-  if @user.save 
+  if @user.save
     session[:id] = @user.id
     redirect "/surveys"
   else
@@ -51,29 +43,24 @@ get '/logout' do
 end
 
 get '/surveys' do
-  "show some surveys!"
-  # erb :surveys  
-=======
-post '/signup' do
-
-  redirect "/surveys"
-end
-
-
-get '/surveys' do
-  "show all surveys and give options to create survey, logout, stats"  
+  "show all surveys and give options to create survey, logout, stats"
   puts Survey.all.first
-  @surveys = Survey.all 
+  @surveys = Survey.all
   erb :surveys
 end
 
 get '/surveys/new' do
   erb :new_survey
->>>>>>> 181b557bdd4e77775eadd3da44d40933f8b7391a
 end
 
 post '/surveys' do
   "create new survey and takes us to surveys erb"
+  p params.inspect
+  p params[:name]
+  @survey = Survey.create!(:name => params[:name])
+  p @survey.name
+  # @question= Question.create(params[:name])
+  erb :surveys
 end
 
 get '/surveys/:id' do
@@ -85,7 +72,7 @@ get '/surveys/:id' do
   puts "**************************"
   # puts @question
   # @choice =[]
-  
+
   # @choice = Choice.where(question_id: @question.id)
   # puts "**************************"
   # puts @choice
