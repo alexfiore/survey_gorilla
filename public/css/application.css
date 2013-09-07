@@ -7,3 +7,33 @@
 th {
   text-align: left;
 }
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 50 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 5px;
+  
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.btn {
+  color: white;
+  background-color: #333;
+  border-color: #300;
+}
+.btn:hover,
+.btn:focus,
+.btn:active {
+  color: white;
+  background-color: #424342;
+  border-color: #424342;
+}
