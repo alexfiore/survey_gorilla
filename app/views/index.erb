@@ -1,7 +1,7 @@
 <div class="container">
 
   <% if current_user %>
-  <% @surveys do |s| %>
+  <% @surveys.each do |s| %>
       <%= "#{s}" %>
       <br>
       <% end %>

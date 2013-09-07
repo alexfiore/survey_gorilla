@@ -23,10 +23,25 @@ post '/login' do
   end
 end
 
+post '/signup' do
+  @user = User.new(params[:user])
+
+  if @user.save 
+    session[:id] = @user.id
+    redirect "/surveys"
+  else
+    erb :index
+  end
+end
+
+get '/logout' do
+  session.clear
+  redirect '/'
+end
+
 get '/surveys' do
   "show all surveys and give options to create survey, logout, stats"  
 end
-
 
 post '/surveys' do
   "create new survey and takes us to surveys erb"
