@@ -2,7 +2,6 @@
 <!-- need a logout -->
 <!--<%= p @surveys.inspect %> -->
  <% @surveys.each do |s| %>
- <%= @surveys.inspect %>
      <div> <%= "#{s.name}" %> </div>
      <button><a href='/surveys/<%= "#{s.id}" %>'> take </button>
     <!-- <form action="/surveys/<%= "#{s.id}" %>" method="get">
