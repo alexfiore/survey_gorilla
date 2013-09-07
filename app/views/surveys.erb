@@ -1,15 +1,16 @@
 <%= erb :_navbar %>
-<!-- need a logout -->
-<!--<%= p @surveys.inspect %> -->
- <% @surveys.each do |s| %>
-     <div> <%= "#{s.name}" %> </div>
-     <button><a href='/surveys/<%= "#{s.id}" %>'> take </button>
-    <!-- <form action="/surveys/<%= "#{s.id}" %>" method="get">
-    <input type="submit" value="take"> -->
-  </form>
-     <button><a href='/surveys/<%= "#{s.id}" %>'>stats</a></button>
+<br><br><br><center>
+<button class="btn-create-survey"><a href='/surveys/new'>Create new survey</a></button>
+<br><br><br>
+<% @surveys.each do |s| %>
+     <%= "#{s.name}" %>
+     <br>
+     <button class="btn"><a href='/surveys/<%= "#{s.id}" %>'>take this survey</a></button>
+    
+     <button class="btn"><a href='/surveys/<%= "#{s.id}" %>'>stats</a></button>
+     <br><br><br><br>
      <% end %>
-    <button><a href='/surveys/new'>Create new survey</a></button>
+   </center>
 </div>
 
 

@@ -27,15 +27,23 @@ th {
 
 .btn {
   color: white;
-  background-color: #333;
+  background-color: #303F65;
   border-color: #300;
 }
+
+.btn a {
+  color: white;
+  border-color: #416AD2;
+  text-decoration: none;
+}
+
 .btn:hover,
 .btn:focus,
 .btn:active {
   color: white;
-  background-color: #424342;
-  border-color: #424342;
+  background-color: #416AD2;
+  border-color: #416AD2;
+  text-decoration: none;
 }
 
 .question_form {
@@ -45,7 +53,7 @@ th {
 .nav-bar{
   float: left;
   width: 100%;
-  background: #416AD2;
+  background: #303F65;
   height: 50px;
   margin-bottom: 30px;
 }
@@ -69,4 +77,26 @@ th {
   padding: 8px 44px;
   text-decoration: none;
   color: white;
+}
+
+
+.btn-create-survey {
+  color: white;
+  background-color: #6C4900;
+  border-color: #96793E;
+}
+
+.btn-create-survey a {
+  color: white;
+  border-color: #416AD2;
+  text-decoration: none;
+}
+
+.btn-create-survey:hover,
+.btn-create-survey:focus,
+.btn-create-survey:active {
+  color: white;
+  background-color: #FFBF3A;
+  border-color: #FFBF3A;
+  text-decoration: none;
 }
