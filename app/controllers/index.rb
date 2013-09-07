@@ -23,8 +23,6 @@ post '/login' do
 end
 
 post '/sign_up' do
-  puts params
-  puts params[:user]
   @user = User.new(params[:user])
   @user.save
   if @user.save
@@ -63,12 +61,6 @@ end
 get '/surveys/:id' do
   "shows the survey for the user to take"
   @survey = Survey.find_by_id(params[:id])
-  # puts @question
-  # @choice =[]
-
-  # @choice = Choice.where(question_id: @question.id)
-  # puts "**************************"
-  # puts @choice
   erb :survey_page
 end
 
