@@ -62,7 +62,11 @@ get '/surveys/:id' do
   "shows the survey for the user to take"
   @survey = Survey.find_by_id(params[:id])
   @question = Question.where("survey_id = ?", @survey.id)
+  @choice1 = Choice.where("question_id = ?", question.first.id)  
+  #this only grabs the choices for the first question
   
+
+
   # @choice = Choice.where(question_id: @question.id)
   # puts "**************************"
   # puts @choice
