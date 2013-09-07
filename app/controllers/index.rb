@@ -76,8 +76,20 @@ post '/surveys' do
   "create new survey and takes us to surveys erb"
 end
 
-get '/surveys/:survey_id' do
+get '/surveys/:id' do
   "shows the survey for the user to take"
+  @survey = Survey.find_by_id(params[:id])
+  puts "**************************"
+  puts @survey
+  @question = Question.where(survey_id: params[:id])
+  puts "**************************"
+  # puts @question
+  # @choice =[]
+  
+  # @choice = Choice.where(question_id: @question.id)
+  # puts "**************************"
+  # puts @choice
+  erb :survey_page
 end
 
 post '/surveys/:survey_id/responses' do
