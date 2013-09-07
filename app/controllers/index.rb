@@ -53,21 +53,17 @@ end
 
 post '/surveys' do
   "create new survey and takes us to surveys erb"
-  @survey = Survey.create!(:name => params[:name])
-  @question= Question.create!(:text => params[:question])
-  @choice1 = Choice.create!(:text => params[:choice1])
-  @choice2 = Choice.create!(:text => params[:choice1])
-  @choice3 = Choice.create!(:text => params[:choice1])
-  erb :surveys
+  survey = Survey.create!(:name => params[:name])
+  question= Question.create!(:text => params[:question], :survey_id => survey.id)
+  Choice.create!(:text => params[:choice1],:question_id => question.id)
+  Choice.create!(:text => params[:choice2], :question_id => question.id)
+  Choice.create!(:text => params[:choice3], :question_id => question.id)
+  redirect "/surveys/#{survey.id}"
 end
 
 get '/surveys/:id' do
   "shows the survey for the user to take"
   @survey = Survey.find_by_id(params[:id])
-  puts "**************************"
-  puts @survey
-  @question = Question.where(survey_id: params[:id])
-  puts "**************************"
   # puts @question
   # @choice =[]
 

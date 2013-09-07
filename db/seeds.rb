@@ -8,9 +8,9 @@ User.create!(name: "Lloyd", email: "lloyd@lloyd.com", password_hash:"lloyd")
 User.create!(name: "Alex", email: "alex@alex.com", password_hash:"alex")
 
 Survey.create!(name: "Favorite Dogs", user_id: 1)
-Survey.create!(name: "Favorite Dogs", user_id: 2)
-Survey.create!(name: "Favorite Dogs", user_id: 3)
-Survey.create!(name: "Favorite Dogs", user_id: 4)
+Survey.create!(name: "Metaphysics", user_id: 2)
+Survey.create!(name: "Colorful", user_id: 3)
+Survey.create!(name: "Hypothetical", user_id: 4)
 
 Question.create!(text: "Who is the best dog in the world?", survey_id: 1)
 Question.create!(text: "Why do pigs fly?", survey_id: 2)

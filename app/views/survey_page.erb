@@ -2,7 +2,11 @@
 
 <div class='container'>
   <%= @survey.name %><br>
-  <%= @question.first.text %>
-
-</div> 
+  <% @survey.questions.each do |question| %>
+    <%= question.text %>
+    <% @survey.questions.first.choices.each do |choice| %>
+    <li><%= choice.text %></li>
+    <% end %>
+  <% end %>
+</div>
 
