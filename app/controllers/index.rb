@@ -62,7 +62,8 @@ get '/surveys/:id' do
   "shows the survey for the user to take"
   @survey = Survey.find_by_id(params[:id])
   @question = Question.where("survey_id = ?", @survey.id)
-@question  # @choice = Choice.where(question_id: @question.id)
+  
+  # @choice = Choice.where(question_id: @question.id)
   # puts "**************************"
   # puts @choice
   erb :survey_page
