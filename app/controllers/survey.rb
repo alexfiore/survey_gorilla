@@ -34,14 +34,21 @@ get '/surveys/:id' do
 end
 
 post '/surveys/:survey_id/responses' do
-  "creates responses in database and goes back to surveys page"
-  erb :surveys
+  # "creates responses in database and goes back to surveys page"
+  40.times {print "*"}
+  p params
+
+  params[:question].each do |key, value|
+    Response.create!(choice_id: value, survey_id: params[:survey_id], user_id: session[:id], question_id: key)
+  end
+  redirect "/surveys"
 end
 
 get '/surveys/:survey_id/stats' do
   "shows the stats for a particular survey"
   erb :stats
 end
+
 
 delete '/surveys/:survey_id' do
   Survey.find(params[:survey_id]).destroy  
