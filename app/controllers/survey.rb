@@ -8,7 +8,7 @@ post '/surveys/new' do
   # "create survey title"
   puts "*" * 40
   puts params
-  @survey = Survey.new(name: params[:name])
+  @survey = Survey.new(name: params[:name], user_id: session[:id])
   if @survey.save
     @confirmation = "You made the survey '#{@survey.name}'!"
     erb :_new_question, layout: false
@@ -25,12 +25,13 @@ post '/questions/new/:survey_id' do
   erb :_new_choice, layout: false
 end
 
-post 'choices/new/:question_id' do
+post '/choices/new/:question_id' do
   puts "*" * 40
   puts params
-  Choice.create!(text: params[:text], question_id: params[:question_id])
+  @question = Question.find_by_id(params[:question_id])
+  Choice.create(text: params[:text], question_id: params[:question_id])
   erb :_new_choice, layout: false
-end
+end 
 
 get '/surveys/:id' do
   # "shows the survey for the user to take"

@@ -2,11 +2,13 @@ $(document).ready(function() {
 
   $("#survey_title").on('submit', function(e){
     e.preventDefault();
+    console.log("hi");
     $.ajax({
       url: this.action,
       type: this.method,
       data: $(this).serialize()
     }).done(function(data){
+      console.log("Success" + data);
       $("#binding_div").append(data);
       $("#survey_title input[type=submit]").hide();
     }).fail(function(){
@@ -22,7 +24,7 @@ $(document).ready(function() {
       data: $(this).serialize()
     }).done(function(data){
       $("#binding_div").append(data);
-      $("#add_choices").hide();
+      $("#add_question").hide();
     }).fail(function(data){
       console.log("error");
     });
@@ -37,7 +39,7 @@ $(document).ready(function() {
     }).done(function(data){
       $("#binding_div").append(data);
       $("#new_choice").hide();
-      $("input input[type=submit]").hide();
+      $("#choice_text input[type=submit]").hide();
     }).fail(function(data){
       console.log("error");
     });

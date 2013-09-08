@@ -1,6 +1,9 @@
-  <form id="choice_text" action ='choices/new/<%= "#{@question.id}" %>' method='post'>
+  <form id="choice_text" action ='/choices/new/<%= "#{@question.id}" %>' method='post'>
       <input type="text" name="text" placeholder="type a choice here...">
-      <input type="submit" value="submit choice">
-    </form>
+      <input id="choice_button" type="submit" value="submit choice">
 
-     <button id="new_choice" type="submit" formaction="/surveys">Survey Finished</button>
+   <a href="/surveys">Survey Finished</a>
+
+  </form>
+
+    

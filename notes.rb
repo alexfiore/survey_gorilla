@@ -8,3 +8,8 @@
 # Compare counts and see whether they are equal
 
 # 6.   
+
+
+# create(sdfkdkjsdf)
+#    @message = "hello"
+#   redirect '/?msg="#{@message}'
