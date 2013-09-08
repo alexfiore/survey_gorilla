@@ -1,3 +1,5 @@
+<%= erb :_navbar %>
+<br><br><center>
 <div class='container'>
   <%= @survey.name %><br>
   <% @survey.questions.each do |question| %>
@@ -7,7 +9,4 @@
     <% end %>
   <% end %>
 </div>
-
-
-A user that's logged in can see the surveys they've created. 
-A nonuser can take a survey. 
+</center>
