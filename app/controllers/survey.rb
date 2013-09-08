@@ -6,11 +6,23 @@ end
 
 post '/surveys' do
   "create new survey and takes us to surveys erb"
+  puts params
+  # =>{"name"=>"test", "question"=>"question test", "choice1"=>"first", "choice2"=>"second", "choice3"=>"third"}
   survey = Survey.create!(:name => params[:name])
   question = Question.create!(:text => params[:question], :survey_id => survey.id)
-  Choice.create!(:text => params[:choice1],:question_id => question.id)
-  Choice.create!(:text => params[:choice2], :question_id => question.id)
-  Choice.create!(:text => params[:choice3], :question_id => question.id)
+
+  40.times {print "*"}
+  p params
+  puts params[:choices]
+  params[:choices].each do |choice|
+    Choice.create(text: params[:choice1])
+  end
+
+  # Choice.create!(:text => params[:choice1],:question_id => question.id)
+  # Choice.create!(:text => params[:choice2], :question_id => question.id)
+  # Choice.create!(:text => params[:choice3], :question_id => question.id)
+
+
   redirect "/surveys/#{survey.id}"
 end
 
