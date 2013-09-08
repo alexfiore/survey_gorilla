@@ -1,17 +1,30 @@
+
 <%= erb :_navbar %>
+
 <br><br><br><center>
+
 <button class="btn-create-survey"><a href='/surveys/new'>Create new survey</a></button>
+
 <br><br><br>
+
 <% @surveys.each do |s| %>
-     <%= "#{s.name}" %>
-     <br>
-     <button class="btn"><a href='/surveys/<%= "#{s.id}" %>'>take this survey</a></button>
     
-     <button class="btn"><a href='/surveys/<%= "#{s.id}" %>'>stats</a></button>
-     <br><br><br><br>
-     <% end %>
+    <strong><div class='container'><%= "#{s.name}:" %></strong>
+    
+    <br><br>
+
+    <button class="btn"><a href='/surveys/<%= "#{s.id}" %>'>take this survey</a></button>
+    <button class="btn"><a href='/surveys/<%= "#{s.id}" %>'>stats</a></button>
+    
+    <form style="display:inline;" action='/surveys/<%= "#{s.id}" %>' method="post">
+      <input type='hidden' name="_method" value="delete">
+      <input style="display:inline;" class="btn-delete-survey" type="submit" name="delete" value="delete">
+    </form>
+   
+   </div>
+   <% end %>  
    </center>
-</div>
+
 
 
 

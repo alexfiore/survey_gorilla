@@ -30,3 +30,8 @@ get '/surveys/:survey_id/stats' do
   "shows the stats for a particular survey"
   erb :stats
 end
+
+delete '/surveys/:survey_id' do
+  Survey.find(params[:survey_id]).destroy  
+  redirect '/surveys'
+end

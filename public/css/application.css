@@ -100,3 +100,18 @@ th {
   border-color: #FFBF3A;
   text-decoration: none;
 }
+
+.btn-delete-survey {
+  color: white;
+  background-color: #B82419;
+  border-color: #96793E;
+}
+
+.btn-delete-survey:hover,
+.btn-delete-survey:focus,
+.btn-delete-survey:active {
+  color: white;
+  background-color: #FF4B3D;
+  border-color: white;
+  text-decoration: none;
+}
