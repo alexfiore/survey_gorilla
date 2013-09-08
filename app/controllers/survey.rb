@@ -5,29 +5,34 @@ get '/surveys/new' do
 end
 
 post '/surveys' do
-  "create new survey and takes us to surveys erb"
+  # "create survey title"
   puts params
-  # =>{"name"=>"test", "question"=>"question test", "choice1"=>"first", "choice2"=>"second", "choice3"=>"third"}
-  survey = Survey.create!(:name => params[:name])
-  question = Question.create!(:text => params[:question], :survey_id => survey.id)
-
-  40.times {print "*"}
-  p params
-  puts params[:choices]
-  params[:choices].each do |choice|
-    Choice.create(text: params[:choice1])
+  @survey = Survey.new(name: params[:name])
+  if @survey.save
+    @confirmation = "You made the survey '#{@survey.name}'!"
+    erb :_new_question, layout: false
+  else
+    @errors = @survey.errors.full_messages
+    erb :new_survey
   end
+end
 
-  # Choice.create!(:text => params[:choice1],:question_id => question.id)
-  # Choice.create!(:text => params[:choice2], :question_id => question.id)
-  # Choice.create!(:text => params[:choice3], :question_id => question.id)
+post '/surveys/:survey_id/questions' do
+  puts params
+  @question = Question.create(text: params[:question], survey_id: survey_id)
+  erb :_new_choice, layout: false
+end
 
-
-  redirect "/surveys/#{survey.id}"
+post 'surveys/:question_id/choices' do
+  # params[:choices].each do |key, value|
+  puts params
+  Choice.create!(text: params[:text], question_id: question_id)
+  # end
+  erb :_new_choice, layout: false
 end
 
 get '/surveys/:id' do
-  "shows the survey for the user to take"
+  # "shows the survey for the user to take"
   @survey = Survey.find_by_id(params[:id])
   @question = Question.where("survey_id = ?", @survey.id)
   erb :survey_page
