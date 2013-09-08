@@ -14,7 +14,7 @@ $(document).ready(function() {
     });
   });
 
-  $("#binding_div").on("click", "#question_text", function(e){
+  $("#binding_div").on("submit", "#question_text", function(e){
     e.preventDefault();
     $.ajax({
       url: this.action,
@@ -28,7 +28,7 @@ $(document).ready(function() {
     });
   });
 
-  $("#binding_div").on("click", "#choice_text", function(e){
+  $("#binding_div").on("submit", "#choice_text", function(e){
     e.preventDefault();
     $.ajax({
       url: this.action,
@@ -37,7 +37,7 @@ $(document).ready(function() {
     }).done(function(data){
       $("#binding_div").append(data);
       $("#new_choice").hide();
-      $("input type[type=submit]").hide();
+      $("input input[type=submit]").hide();
     }).fail(function(data){
       console.log("error");
     });

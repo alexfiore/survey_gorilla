@@ -4,8 +4,9 @@ get '/surveys/new' do
   erb :new_survey
 end
 
-post '/surveys' do
+post '/surveys/new' do
   # "create survey title"
+  puts "*" * 40
   puts params
   @survey = Survey.new(name: params[:name])
   if @survey.save
@@ -17,17 +18,17 @@ post '/surveys' do
   end
 end
 
-post '/surveys/:survey_id/questions' do
+post '/questions/new/:survey_id' do
+  puts "*" * 40
   puts params
-  @question = Question.create(text: params[:question], survey_id: survey_id)
+  @question = Question.create(text: params[:text], survey_id: params[:survey_id])
   erb :_new_choice, layout: false
 end
 
-post 'surveys/:question_id/choices' do
-  # params[:choices].each do |key, value|
+post 'choices/new/:question_id' do
+  puts "*" * 40
   puts params
-  Choice.create!(text: params[:text], question_id: question_id)
-  # end
+  Choice.create!(text: params[:text], question_id: params[:question_id])
   erb :_new_choice, layout: false
 end
 

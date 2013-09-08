@@ -1,5 +1,5 @@
-<form id="question_text" action ='/surveys/<%= @survey.id %>/questions' method='post'>
+<form id="question_text" action ='/questions/new/<%= "#{@survey.id}" %>' method='post'>
       <h3>Add a question</h3>
-      <input type="text" name="question" placeholder="type the question here...">
+      <input type="text" name="text" placeholder="type the question here...">
       <input id="add_choices" type="submit" value="submit question">
 </form>
