@@ -1,17 +1,14 @@
 <div class="nav-bar">
 
 <%if current_user %>
+  
   <br>
-  <div class = "nav-bar">
+  <div class="nav-bar">
    <a href="/logout">logout</a> <a href="/surveys">surveys</a>
 
     
   </div>
-  
-<% else %>
-     
-     <%= erb :index %>
 
-  <%end%>
+<%end%>
 
 </div>

@@ -1,5 +1,11 @@
 before do
-  erb :index unless current_user
+  
+  pass if %w[surveys sign_in login sign_up logout].include? request.path_info.split('/')[1]
+
+  unless current_user
+    redirect to '/sign_in'
+  end
+
 end
 
 get '/' do
@@ -10,12 +16,21 @@ get '/' do
   end
 end
 
+get '/sign_in' do
+  erb :sign_in
+end
+
 get '/surveys' do
-  "show all surveys and give options to create survey, logout, stats"
-  @surveys = Survey.all
-  erb :surveys
+  if current_user 
+    @surveys = Survey.all
+    erb :surveys
+  else
+    redirect '/'
+  end
 end
 
 not_found do 
   erb :not_found
 end
+
+

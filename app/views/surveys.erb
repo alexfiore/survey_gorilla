@@ -14,7 +14,7 @@
     <br><br>
 
     <button class="btn"><a href='/surveys/<%= "#{s.id}" %>'>take this survey</a></button>
-    <button class="btn"><a href='/surveys/<%= "#{s.id}" %>'>stats</a></button>
+    <button class="btn"><a href='/surveys/<%= "#{s.id}" %>/stats'>stats</a></button>
     
     <form style="display:inline;" action='/surveys/<%= "#{s.id}" %>' method="post">
       <input type='hidden' name="_method" value="delete">

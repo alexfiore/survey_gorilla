@@ -2,5 +2,10 @@
 <br><br><center>
 <div class='container'>
 
-"This is our stats page for Survey X"
+<% @responses.each do |response| %>
+  <div>
+    <p><%= response.choice.text %></p>
+  </div>
+<% end %>
+
 </div>

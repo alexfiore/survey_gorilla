@@ -1,5 +1,7 @@
-<form id="question_text" action ='/questions/new/<%= "#{@survey.id}" %>' method='post'>
-      <h3>Add a question</h3>
-      <input type="text" name="text" placeholder="type the question here...">
-      <input id="add_question" type="submit" value="submit question">
+
+<button class='btn-create-survey'><a href="/surveys">Click Here to Finish Your Survey</a></button>
+<form class="question_text" action ='/questions/new/<%= "#{@survey.id}" %>' method='post'>
+  <h3>Add a question</h3>
+  <input type="text" name="text" placeholder="type the question here...">
+  <input class="btn" id="add_question" type="submit" value="submit question">
 </form>
